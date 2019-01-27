@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'index.js',
+    libraryTarget: 'umd',
   },
   devtool: 'source-map',
   module: {
@@ -18,19 +19,6 @@ module.exports = {
     ],
   },
   externals: {
-    // Don't bundle react or react-dom
-    // https://itnext.io/how-to-package-your-react-component-for-distribution-via-npm-d32d4bf71b4f
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'React',
-      root: 'React',
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'ReactDOM',
-      root: 'ReactDOM',
-    },
+    react: 'commonjs react',
   },
 }
