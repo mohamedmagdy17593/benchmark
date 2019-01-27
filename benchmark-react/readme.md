@@ -1,0 +1,1 @@
+# React Benchmark Component

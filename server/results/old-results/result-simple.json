@@ -1,0 +1,50 @@
+[
+  {
+    "profilerName": "styled-components",
+    "numOfReRenders": 10,
+    "numOfRenderdComponent": 1000,
+    "reRenderIntervar": 100,
+    "total": {
+      "actualTime": "803.6999999976615",
+      "baseTime": "579.1999999737527",
+      "defrance": "1143.299999998817"
+    },
+    "avg": {
+      "actualTime": "80.36999999976615",
+      "baseTime": "57.91999999737527",
+      "defrance": "114.3299999998817"
+    }
+  },
+  {
+    "profilerName": "emotion",
+    "numOfReRenders": 10,
+    "numOfRenderdComponent": 1000,
+    "reRenderIntervar": 100,
+    "total": {
+      "actualTime": "530.7000000093467",
+      "baseTime": "315.2000000109183",
+      "defrance": "756.800000001931"
+    },
+    "avg": {
+      "actualTime": "53.07000000093467",
+      "baseTime": "31.52000000109183",
+      "defrance": "75.6800000001931"
+    }
+  },
+  {
+    "profilerName": "normal-css",
+    "numOfReRenders": 10,
+    "numOfRenderdComponent": 1000,
+    "reRenderIntervar": 100,
+    "total": {
+      "actualTime": "482.19999998127605",
+      "baseTime": "237.09999997572595",
+      "defrance": "713.4999999998399"
+    },
+    "avg": {
+      "actualTime": "48.219999998127605",
+      "baseTime": "23.709999997572595",
+      "defrance": "71.34999999998399"
+    }
+  }
+]
