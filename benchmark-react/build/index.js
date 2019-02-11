@@ -17254,7 +17254,7 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ExperimentPlayground)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "keyGenerator", generator(range(_this.props.numOfRenderdComponent)));
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "keyGenerator", generator(range(_this.props.componentsCount)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       keys: _this.keyGenerator()
@@ -17282,10 +17282,10 @@ function (_React$PureComponent) {
       var _this2 = this;
 
       var _this$props = this.props,
-          numOfReRenders = _this$props.numOfReRenders,
-          reRenderIntervar = _this$props.reRenderIntervar;
+          reRendersCount = _this$props.reRendersCount,
+          reRenderInterval = _this$props.reRenderInterval;
       setTimeout(function () {
-        if (_this2._count < numOfReRenders) {
+        if (_this2._count < reRendersCount) {
           _this2._count++;
 
           _this2.updateKeys();
@@ -17294,7 +17294,7 @@ function (_React$PureComponent) {
         } else {
           alert('Completed!');
         }
-      }, reRenderIntervar);
+      }, reRenderInterval);
     }
   }, {
     key: "render",
@@ -17302,9 +17302,9 @@ function (_React$PureComponent) {
       var _this3 = this;
 
       var keys = this.state.keys;
-      var profilerName = this.props.profilerName;
+      var testCaseName = this.props.testCaseName;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["unstable_Profiler"], {
-        id: profilerName,
+        id: testCaseName,
         onRender: _ExperimentResult__WEBPACK_IMPORTED_MODULE_2__["logProfile"]
       }, keys.map(function (id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(_this3.props.children, {
@@ -17316,13 +17316,6 @@ function (_React$PureComponent) {
 
   return ExperimentPlayground;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent);
-
-_defineProperty(ExperimentPlayground, "defaultProps", {
-  numOfRenderdComponent: 100,
-  numOfReRenders: 10,
-  reRenderIntervar: 1000,
-  profilerName: 'unknown'
-});
 
 /* harmony default export */ __webpack_exports__["default"] = (ExperimentPlayground);
 
@@ -17389,7 +17382,7 @@ function logProfile(_id, phase, actualTime, baseTime, startTime, commitTime, int
       startTime: startTime,
       commitTime: commitTime,
       interactions: interactions,
-      defrance: commitTime - startTime
+      difference: commitTime - startTime
     }])
   });
 } // deep merge helper
@@ -17407,7 +17400,7 @@ var propsTotal = function propsTotal(props) {
   };
 };
 
-var profilerTotal = propsTotal(['actualTime', 'baseTime', 'defrance']);
+var profilerTotal = propsTotal(['actualTime', 'baseTime', 'difference']);
 
 function Result(_ref) {
   var results = _ref.results;
@@ -17428,7 +17421,7 @@ function Result(_ref) {
       valign: "top"
     }, phaseName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "startTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "commitTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "defrance"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, phaseData.map(function (d, i) {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "startTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "commitTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, phaseData.map(function (d, i) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         key: i
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
@@ -17443,10 +17436,10 @@ function Result(_ref) {
         valign: "top"
       }, d.commitTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         valign: "top"
-      }, d.defrance));
+      }, d.difference));
     })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "defrance"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       valign: "top"
     }, "total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top",
@@ -17456,8 +17449,8 @@ function Result(_ref) {
       className: "".concat(phaseName, " total baseTime")
     }, total.baseTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top",
-      className: "".concat(phaseName, " total defrance")
-    }, total.defrance)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      className: "".concat(phaseName, " total difference")
+    }, total.difference)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       valign: "top"
     }, "avg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top",
@@ -17467,8 +17460,8 @@ function Result(_ref) {
       className: "".concat(phaseName, " avg baseTime")
     }, total.baseTime / len), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top",
-      className: "".concat(phaseName, " avg defrance")
-    }, total.defrance / len))))));
+      className: "".concat(phaseName, " avg difference")
+    }, total.difference / len))))));
   })))));
 }
 
@@ -17555,7 +17548,7 @@ function (_Component) {
       var _this$state = this.state,
           path = _this$state.path,
           results = _this$state.results;
-      var resultsInfo = ramda__WEBPACK_IMPORTED_MODULE_1__["pickAll"](['numOfRenderdComponent', 'numOfReRenders', 'reRenderIntervar', 'profilerName'], this.props);
+      var resultsInfo = ramda__WEBPACK_IMPORTED_MODULE_1__["pickAll"](['componentsCount', 'reRendersCount', 'reRenderInterval', 'testCaseName'], this.props);
       return [path, _objectSpread({}, resultsInfo, results)];
     }
   }, {
@@ -17564,7 +17557,7 @@ function (_Component) {
       var _this$state2 = this.state,
           path = _this$state2.path,
           results = _this$state2.results;
-      var profilerName = this.props.profilerName;
+      var testCaseName = this.props.testCaseName;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           padding: 12
@@ -17578,7 +17571,7 @@ function (_Component) {
       }, "save results"), " see all", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: _api__WEBPACK_IMPORTED_MODULE_2__["url"],
         target: "blank"
-      }, "results")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profilerName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Result, {
+      }, "results")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, testCaseName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Result, {
         results: results
       }));
     }
@@ -17603,7 +17596,7 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sendResults", function() { return sendResults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "url", function() { return url; });
-var url = 'http://localhost:8080';
+var url = 'http://localhost:8080/files';
 
 function sendResults(path, data) {
   return fetch("".concat(url, "/").concat(path), {
@@ -17645,10 +17638,10 @@ __webpack_require__.r(__webpack_exports__);
  * using this main Component
  * using it like
  * <Benchmark
- *   numOfRenderdComponent={100}, // default
- *   numOfReRenders={10}, // default
- *   reRenderIntervar={1000}, // default
- *   profilerName={'unknown'}
+ *   componentsCount={100}, // default
+ *   reRendersCount={10}, // default
+ *   reRenderInterval={1000}, // default
+ *   testCaseName="some name"
  * >
  *   <Test />
  * </Benchmark>
@@ -17668,11 +17661,16 @@ function Benchmark(props) {
   }, "Experiment Playground"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ExperimentPlayground__WEBPACK_IMPORTED_MODULE_1__["default"], props));
 }
 
+Benchmark.defaultProps = {
+  componentsCount: 100,
+  reRendersCount: 10,
+  reRenderInterval: 1000
+};
 Benchmark.prototype = {
-  numOfRenderdComponent: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
-  numOfReRenders: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
-  reRenderIntervar: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
-  profilerName: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string
+  componentsCount: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
+  reRendersCount: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
+  reRenderInterval: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
+  testCaseName: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (Benchmark);
 

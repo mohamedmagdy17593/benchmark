@@ -22,7 +22,7 @@ function logProfile(
           startTime,
           commitTime,
           interactions,
-          defrance: commitTime - startTime,
+          difference: commitTime - startTime,
         },
       ],
     },
@@ -44,7 +44,7 @@ const propsTotal = props => objects =>
     {},
   )
 
-const profilerTotal = propsTotal(['actualTime', 'baseTime', 'defrance'])
+const profilerTotal = propsTotal(['actualTime', 'baseTime', 'difference'])
 
 function Result({results}) {
   return (
@@ -74,7 +74,7 @@ function Result({results}) {
                           <th>baseTime</th>
                           <th>startTime</th>
                           <th>commitTime</th>
-                          <th>defrance</th>
+                          <th>difference</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -85,7 +85,7 @@ function Result({results}) {
                             <td valign="top">{d.baseTime}</td>
                             <td valign="top">{d.startTime}</td>
                             <td valign="top">{d.commitTime}</td>
-                            <td valign="top">{d.defrance}</td>
+                            <td valign="top">{d.difference}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -98,7 +98,7 @@ function Result({results}) {
                           <th />
                           <th>actualTime</th>
                           <th>baseTime</th>
-                          <th>defrance</th>
+                          <th>difference</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -118,9 +118,9 @@ function Result({results}) {
                           </td>
                           <td
                             valign="top"
-                            className={`${phaseName} total defrance`}
+                            className={`${phaseName} total difference`}
                           >
-                            {total.defrance}
+                            {total.difference}
                           </td>
                         </tr>
                         <tr>
@@ -139,9 +139,9 @@ function Result({results}) {
                           </td>
                           <td
                             valign="top"
-                            className={`${phaseName} avg defrance`}
+                            className={`${phaseName} avg difference`}
                           >
-                            {total.defrance / len}
+                            {total.difference / len}
                           </td>
                         </tr>
                       </tbody>
@@ -168,7 +168,6 @@ class ExperimentResult extends Component {
         results: arrMergeDeep(results, newResult),
       }))
   }
-
   handleChange = e => this.setState({path: e.target.value})
   save = async () => {
     const [path, data] = this.getDataToSend()
@@ -180,19 +179,18 @@ class ExperimentResult extends Component {
     const {path, results} = this.state
     const resultsInfo = R.pickAll(
       [
-        'numOfRenderdComponent',
-        'numOfReRenders',
-        'reRenderIntervar',
-        'profilerName',
+        'componentsCount',
+        'reRendersCount',
+        'reRenderInterval',
+        'testCaseName',
       ],
       this.props,
     )
     return [path, {...resultsInfo, ...results}]
   }
-
   render() {
     const {path, results} = this.state
-    const {profilerName} = this.props
+    const {testCaseName} = this.props
     return (
       <div style={{padding: 12}}>
         <p>
@@ -207,7 +205,7 @@ class ExperimentResult extends Component {
             results
           </a>
         </p>
-        <h1>{profilerName}</h1>
+        <h1>{testCaseName}</h1>
         <Result results={results} />
       </div>
     )

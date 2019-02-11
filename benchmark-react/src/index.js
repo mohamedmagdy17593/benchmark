@@ -7,10 +7,10 @@ import PropType from 'prop-types'
  * using this main Component
  * using it like
  * <Benchmark
- *   numOfRenderdComponent={100}, // default
- *   numOfReRenders={10}, // default
- *   reRenderIntervar={1000}, // default
- *   profilerName={'unknown'}
+ *   componentsCount={100}, // default
+ *   reRendersCount={10}, // default
+ *   reRenderInterval={1000}, // default
+ *   testCaseName="some name"
  * >
  *   <Test />
  * </Benchmark>
@@ -27,11 +27,16 @@ function Benchmark(props) {
     </>
   )
 }
+Benchmark.defaultProps = {
+  componentsCount: 100,
+  reRendersCount: 10,
+  reRenderInterval: 1000,
+}
 Benchmark.prototype = {
-  numOfRenderdComponent: PropType.number,
-  numOfReRenders: PropType.number,
-  reRenderIntervar: PropType.number,
-  profilerName: PropType.string,
+  componentsCount: PropType.number,
+  reRendersCount: PropType.number,
+  reRenderInterval: PropType.number,
+  testCaseName: PropType.string.isRequired,
 }
 
 export default Benchmark

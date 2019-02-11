@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080'
+const url = 'http://localhost:8080/files'
 
 function sendResults(path, data) {
   return fetch(`${url}/${path}`, {

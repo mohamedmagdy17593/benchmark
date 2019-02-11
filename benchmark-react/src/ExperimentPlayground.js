@@ -6,39 +6,30 @@ const range = num => Array.from({length: num}, (_, i) => i)
 const generator = arr => () => arr.map(cuid)
 
 class ExperimentPlayground extends React.PureComponent {
-  static defaultProps = {
-    numOfRenderdComponent: 100,
-    numOfReRenders: 10,
-    reRenderIntervar: 1000,
-    profilerName: 'unknown',
-  }
-
-  keyGenerator = generator(range(this.props.numOfRenderdComponent))
+  keyGenerator = generator(range(this.props.componentsCount))
   state = {keys: this.keyGenerator()}
-
   componentDidMount() {
     this.update()
   }
   updateKeys = () => this.setState({keys: this.keyGenerator()})
   _count = 0
   update() {
-    const {numOfReRenders, reRenderIntervar} = this.props
+    const {reRendersCount, reRenderInterval} = this.props
     setTimeout(() => {
-      if (this._count < numOfReRenders) {
+      if (this._count < reRendersCount) {
         this._count++
         this.updateKeys()
         this.update()
       } else {
         alert('Completed!')
       }
-    }, reRenderIntervar)
+    }, reRenderInterval)
   }
-
   render() {
     const {keys} = this.state
-    const {profilerName} = this.props
+    const {testCaseName} = this.props
     return (
-      <Profiler id={profilerName} onRender={logProfile}>
+      <Profiler id={testCaseName} onRender={logProfile}>
         {keys.map(id => React.cloneElement(this.props.children, {key: id}))}
       </Profiler>
     )
