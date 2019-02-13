@@ -62,13 +62,18 @@ You should be able to import the library into your project and wrap any componen
 ```jsx
 import React from 'react';
 import CustomComponent from './component/CustomComponent'
-import BenchMark from 'benchmark-react';
+import Benchmark from 'benchmark-react';
 
 export default function App () {
   return (
-    <BenchMark name="test1">
+    <Benchmark
+      componentsCount={100}, // default
+      reRendersCount={10}, // default
+      reRenderInterval={1000}, // default
+      testCaseName="some name"
+    >
       <CustomComponent />
-    </BenchMark>
+    </Benchmark>
   )
 }
 ```
