@@ -1,4 +1,5 @@
 # Benchmark for React apps
+
 React benchmark with express server to catch data and simple visualization.
 
 ## Getting Started
@@ -10,6 +11,7 @@ git clone https://github.com/mohamedmagdy17593/benchmark.git
 cd ./benchmark
 npm run setup
 ```
+
 It must be noted that the setup script installs the needed dependencies and runs numerous scripts, one of them is [npm link](https://docs.npmjs.com/cli/link.html)
 which might need special persmissions. It's similar to installing a package globally.
 
@@ -20,10 +22,9 @@ The directory structure looks like this:
     ├── benchmark-visualizer      # visualisation playground
     └── example                   # Example for a simple use case.
 
-
 ### Starting the server
 
-The server is responsible for writing and saving the json file that is later used for visualizng the benchmark results. 
+The server is responsible for writing and saving the json file that is later used for visualizng the benchmark results.
 
 ```
 cd ./server
@@ -42,7 +43,7 @@ This will run the basic example for the bench mark in a tabular view. It also gi
 ### Running the visualizer
 
 ```
-cd ./benchmark-visualizer 
+cd ./benchmark-visualizer
 npm run start
 ```
 
@@ -50,14 +51,13 @@ When the visualizer run, choose the test file you want from the drop down menu a
 
 ## Usage in an external project
 
-
 **Make sure that all 3 environments are running**, then go to your other project root directory
 
 ```
 npm link benchmark-react
 ```
 
-You should be able to import the library into your project and wrap any component you want. 
+You should be able to import the library into your project and wrap any component you want.
 
 ```jsx
 import React from 'react';
@@ -77,5 +77,3 @@ export default function App () {
   )
 }
 ```
-
-
