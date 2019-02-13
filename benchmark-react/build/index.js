@@ -105,7 +105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "* {\n  font-family: sans-serif;\n}\n\n.benchmark-table {\n  margin-bottom: 20px;\n  padding: 10px;\n  border: 1px solid #eaeaea;\n}\n\n.benchmark-table th,\n.benchmark-table td\n {\n  padding: 15px 10px;\n  color: rgba(0,0,0,0.6);\n  text-align: left;\n  vertical-align: middle;\n  text-transform: capitalize;\n}\n\n.benchmark-table td {\n  color: #343434;\n}\n\n.benchmark-table tbody> tr:last-child td {\n  border: 0px;\n}\n\n.benchmark-table td {\n  border-bottom: 1px solid rgba(0,0,0,0.12)\n}\n\n.benchmark-table tbody tr:first-child td {\n  border-top: 1px solid rgba(0,0,0,0.12)\n}\n\n.phase-title {\n  font-weight: 300;\n  text-transform: capitalize;\n}\n\n.update-container {\n  display: flex;\n}\n\n.update-container > div:first-child {\n  margin-right: 20px;\n}\n\n\n\n", ""]);
 
 
 
@@ -18342,24 +18342,22 @@ var profilerTotal = propsTotal(['actualTime', 'baseTime', 'difference']);
 
 function Result(_ref) {
   var results = _ref.results;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    style: {
-      width: '100%'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "phase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "data"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "calculations"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ramda__WEBPACK_IMPORTED_MODULE_1__["toPairs"](results.info).map(function (_ref2, i) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, ramda__WEBPACK_IMPORTED_MODULE_1__["toPairs"](results.info).map(function (_ref2, i) {
     var _ref3 = _slicedToArray(_ref2, 2),
         phaseName = _ref3[0],
         phaseData = _ref3[1];
 
     var len = phaseData.length;
     var total = profilerTotal(phaseData);
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-      key: i
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: i,
+      className: phaseName == "update" ? 'update-container' : 'mount-container'
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      className: "phase-title",
       valign: "top"
-    }, phaseName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      valign: "top"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "startTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "commitTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, phaseData.map(function (d, i) {
+    }, phaseName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "benchmark-table"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "startTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "commitTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, phaseData.map(function (d, i) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         key: i
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
@@ -18375,9 +18373,12 @@ function Result(_ref) {
       }, d.commitTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
         valign: "top"
       }, d.difference));
-    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    })))), phaseName === 'update' && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      className: "phase-title",
       valign: "top"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    }, "Calculations"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      className: "benchmark-table"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "actualTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "baseTime"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "difference"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       valign: "top"
     }, "total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       valign: "top",
@@ -18400,7 +18401,7 @@ function Result(_ref) {
       valign: "top",
       className: "".concat(phaseName, " avg difference")
     }, total.difference / len))))));
-  })))));
+  })));
 }
 
 var ExperimentResult =
