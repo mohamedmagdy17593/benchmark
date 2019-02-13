@@ -8,9 +8,15 @@
   </head>
   <body>
     <h1>Results</h1>
+    <strong>
+      <p>
+        you chould use <span style="color: blue">react-visualizer</span> for
+        more options
+      </p>
+    </strong>
     <ul>
       <% files.forEach(file => { %>
-      <li><a href="/<%= file %>"> <%= file %> </a></li>
+      <li><a href="/files/<%= file %>"> <%= file %> </a></li>
       <% }) %>
     </ul>
   </body>
