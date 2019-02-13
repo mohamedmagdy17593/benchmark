@@ -1,0 +1,24 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup:server": "cd ./server && npm i && cd ..",
+    "setup:benchmark-visualizer": "cd ./benchmark-visualizer && npm i && cd ..",
+    "setup:benchmark-react": "cd ./benchmark-react && npm i && npm link && cd ..",
+    "setup:example": "cd ./example && npm i && npm link benchmark-react && cd ..",
+    "setup": "npm run setup:server && npm run setup:benchmark-visualizer && npm run setup:benchmark-react && npm run setup:example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedmagdy17593/benchmark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamedmagdy17593/benchmark/issues"
+  },
+  "homepage": "https://github.com/mohamedmagdy17593/benchmark#readme"
+}

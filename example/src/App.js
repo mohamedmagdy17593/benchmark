@@ -1,10 +1,14 @@
-import React from 'react'
-
-// import Benchmark from 'benchmark-react'
-import Test from './Test'
+import React from "react";
+import Benchmark from "benchmark-react";
 
 function App() {
-  return <Test />
+  return (
+    <div>
+      <Benchmark testCaseName="test case name here">
+        <p>Hi</p>
+      </Benchmark>
+    </div>
+  );
 }
 
-export default App
+export default App;
