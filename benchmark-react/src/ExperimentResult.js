@@ -169,24 +169,27 @@ class ExperimentResult extends Component {
     const {fileName, testCaseName, results} = this.state
     return (
       <div style={{padding: 12}}>
-        <p>
-          <strong>save to:</strong>{' '}
+        <header className="benchmark__test-header">
           <input
+            className="benchmark__text-field"
             value={fileName}
             onChange={this.handleFileNameChange}
-            placeholder="file name"
+            placeholder="File name"
           />
           <input
+            className="benchmark__text-field"
             value={testCaseName}
             onChange={this.handleTestCaseNameChange}
             placeholder="test case name"
           />
-          <button onClick={this.save}>save results</button> see all{' '}
+          <button className="btn btn-primary" onClick={this.save}>
+            save results
+          </button>{' '}
+          see all{' '}
           <a href={url} target="blank">
             results
           </a>
-        </p>
-        <h1>{testCaseName}</h1>
+        </header>
         <Result results={results} />
       </div>
     )

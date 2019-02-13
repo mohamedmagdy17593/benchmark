@@ -105,7 +105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "* {\n  font-family: sans-serif;\n}\n\n.benchmark-table {\n  margin-bottom: 20px;\n  padding: 10px;\n  border: 1px solid #eaeaea;\n}\n\n.benchmark-table th,\n.benchmark-table td {\n  padding: 15px 10px;\n  color: rgba(0, 0, 0, 0.6);\n  text-align: left;\n  vertical-align: middle;\n  text-transform: capitalize;\n}\n\n.benchmark-table td {\n  color: #343434;\n}\n\n.benchmark-table tbody > tr:last-child td {\n  border: 0px;\n}\n\n.benchmark-table td {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.12);\n}\n\n.benchmark-table tbody tr:first-child td {\n  border-top: 1px solid rgba(0, 0, 0, 0.12);\n}\n\n.phase-title {\n  font-weight: 300;\n  text-transform: capitalize;\n}\n\n.update-container {\n  display: flex;\n}\n\n.update-container > div:first-child {\n  margin-right: 20px;\n}\n", ""]);
+exports.push([module.i, "* {\n  font-family: sans-serif;\n}\n\n.benchmark-table {\n  margin-bottom: 20px;\n  padding: 10px;\n  border: 1px solid #eaeaea;\n}\n\n.benchmark-table th,\n.benchmark-table td {\n  padding: 15px 10px;\n  color: rgba(0, 0, 0, 0.6);\n  text-align: left;\n  vertical-align: middle;\n  text-transform: capitalize;\n}\n\n.benchmark-table td {\n  color: #343434;\n}\n\n.benchmark-table tbody > tr:last-child td {\n  border: 0px;\n}\n\n.benchmark-table td {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.12);\n}\n\n.benchmark-table tbody tr:first-child td {\n  border-top: 1px solid rgba(0, 0, 0, 0.12);\n}\n\n.phase-title {\n  font-size: 22px;\n  font-weight: 600;\n  color: #343434;\n  text-transform: capitalize;\n}\n\n.update-container {\n  display: flex;\n}\n\n.update-container > div:first-child {\n  margin-right: 20px;\n}\n\n.benchmark-case-name {\n  font-size: 24px;\n  font-weight: 300;\n  margin: 0px;\n  padding-top: 10px;\n  color: #4285F4;\n}\n\n/* text header */\n\n.benchmark__test-header {\n  padding: 20px;\n  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);\n  margin-bottom: 20px;\n}\n\n.benchmark__text-field {\n  padding: 10px 5px;\n  margin-right: 20px;\n  -webkit-border-radius: 2px;\n  -moz-border-radius: 2px;\n  -ms-border-radius: 2px;\n  -o-border-radius: 2px;\n  color: #000000;\n  border: 1px solid #9e9e9e;\n  outline: none;\n  min-width: 20%;\n}\n\n/* btn */\n\n.btn {\n  border-radius: 2px;\n  border: 0;\n  transition: .2s ease-out;\n  color: #fff;\n  margin: 6px;\n  padding: 10px 15px;\n  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);\n}\n\n.btn:hover {\n  color: #fff;\n  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\n}\n\n.btn:active, .btn:focus, .btn.active {\n  outline: 0;\n  color: #fff;\n}\n\n/*Primary*/\n.btn-primary {\n  background: #4285F4; \n}\n\n.btn-primary:hover, .btn-primary:focus {\n  background-color: #5a95f5 !important;\n}\n\n.btn-primary.active {\n  background-color: #0b51c5 !important;\n}", ""]);
 
 
 
@@ -18516,20 +18516,25 @@ function (_Component) {
         style: {
           padding: 12
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "save to:"), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "benchmark__test-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "benchmark__text-field",
         value: fileName,
         onChange: this.handleFileNameChange,
-        placeholder: "file name"
+        placeholder: "File name"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "benchmark__text-field",
         value: testCaseName,
         onChange: this.handleTestCaseNameChange,
         placeholder: "test case name"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
         onClick: this.save
       }, "save results"), " see all", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: _api__WEBPACK_IMPORTED_MODULE_2__["url"],
         target: "blank"
-      }, "results")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, testCaseName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Result, {
+      }, "results")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Result, {
         results: results
       }));
     }
