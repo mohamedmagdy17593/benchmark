@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import * as R from 'ramda'
 import {sendResults, url} from './api'
+import './results.css'
 
 let f
 
@@ -178,12 +179,7 @@ class ExperimentResult extends Component {
   getDataToSend() {
     const {path, results} = this.state
     const resultsInfo = R.pickAll(
-      [
-        'componentsCount',
-        'reRendersCount',
-        'reRenderInterval',
-        'testCaseName',
-      ],
+      ['componentsCount', 'reRendersCount', 'reRenderInterval', 'testCaseName'],
       this.props,
     )
     return [path, {...resultsInfo, ...results}]
