@@ -7,30 +7,32 @@ function ResultsProvider({children}) {
   const [results, setResults] = React.useState([])
   const [fileNames, setFileNames] = React.useState([])
   const [fileName, _setFileName] = React.useState()
+
   React.useEffect(() => {
     getFileNames().then(fileNames => {
       setFileNames(fileNames)
       setFileName(fileNames[0])
     })
   }, [])
+
   function setResultByIndex(resultIndex, data) {
     setResults(results =>
       results.map((r, i) => (i === resultIndex ? {...r, ...data} : r)),
     )
   }
-  function setResultsByFileName(fileName) {
-    getResults(fileName).then(setResults)
-  }
+
   function setFileName(fileName) {
     _setFileName(fileName)
     if (fileName) {
-      setResultsByFileName(fileName)
+      getResults(fileName).then(setResults)
     }
   }
+
   function deleteExpermentByIndex(index) {
     deleteExperment(fileName, index)
     setResults(results.filter((_, i) => i !== +index))
   }
+
   return (
     <resultsContext.Provider
       value={React.useMemo(

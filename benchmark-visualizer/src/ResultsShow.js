@@ -29,11 +29,14 @@ function ResultsDropdownFilter({onChange, value}) {
 function ResultsShow() {
   const {results} = useResults()
   const [filterKey, setFilterKey] = React.useState('actualTime')
+
   const checkedResults = results.filter(r => r.checked)
   const avgCheckedResults = getAvgFor(checkedResults, filterKey)
+
   React.useEffect(() => {
     console.table(results)
   }, [results])
+
   return (
     <div>
       <ResultsDropdownFilter onChange={setFilterKey} value={filterKey} />

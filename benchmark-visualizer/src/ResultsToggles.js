@@ -35,15 +35,13 @@ function ResultsToggles() {
             {testCaseName}
             <button
               className="btn btn-link"
-              style={{padding: '0 10px'}}
+              style={{padding: '0 10px', color: 'red'}}
               onClick={() =>
                 window.confirm(`are you sure to delete this ${testCaseName}`) &&
                 deleteExpermentByIndex(i)
               }
             >
-              <span role="img" style={{color: 'red'}} aria-label="delete">
-                X
-              </span>
+              X
             </button>
           </label>
         </div>

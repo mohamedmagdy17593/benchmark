@@ -44,33 +44,5 @@
         }
       ]
     }
-  },
-  {
-    "componentsCount": 100,
-    "reRendersCount": 10,
-    "reRenderInterval": 1000,
-    "testCaseName": "button four",
-    "info": {
-      "mount": [
-        {
-          "actualTime": 21.07500001147855,
-          "baseTime": 3.5050000151386485,
-          "startTime": 799.845000001369,
-          "commitTime": 922.3899999997229,
-          "interactions": {},
-          "difference": 122.54499999835389
-        }
-      ],
-      "update": [
-        {
-          "actualTime": 33.14999999565771,
-          "baseTime": 9.824999993725214,
-          "startTime": 1931.8050000001676,
-          "commitTime": 1970.6749999968451,
-          "interactions": {},
-          "difference": 38.86999999667751
-        }
-      ]
-    }
   }
 ]
