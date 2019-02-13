@@ -107,45 +107,15 @@ function Result({results}) {
                     <tbody>
                       <tr>
                         <th valign="top">total</th>
-                        <td
-                          valign="top"
-                          className={`${phaseName} total actualTime`}
-                        >
-                          {total.actualTime}
-                        </td>
-                        <td
-                          valign="top"
-                          className={`${phaseName} total baseTime`}
-                        >
-                          {total.baseTime}
-                        </td>
-                        <td
-                          valign="top"
-                          className={`${phaseName} total difference`}
-                        >
-                          {total.difference}
-                        </td>
+                        <td valign="top">{total.actualTime}</td>
+                        <td valign="top">{total.baseTime}</td>
+                        <td valign="top">{total.difference}</td>
                       </tr>
                       <tr>
                         <th valign="top">avg</th>
-                        <td
-                          valign="top"
-                          className={`${phaseName} avg actualTime`}
-                        >
-                          {total.actualTime / len}
-                        </td>
-                        <td
-                          valign="top"
-                          className={`${phaseName} avg baseTime`}
-                        >
-                          {total.baseTime / len}
-                        </td>
-                        <td
-                          valign="top"
-                          className={`${phaseName} avg difference`}
-                        >
-                          {total.difference / len}
-                        </td>
+                        <td valign="top">{total.actualTime / len}</td>
+                        <td valign="top">{total.baseTime / len}</td>
+                        <td valign="top">{total.difference / len}</td>
                       </tr>
                     </tbody>
                   </table>
