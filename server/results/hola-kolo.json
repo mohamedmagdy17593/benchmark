@@ -1,0 +1,102 @@
+[
+  {
+    "componentsCount": 100,
+    "reRendersCount": 10,
+    "reRenderInterval": 1000,
+    "testCaseName": "test case name here",
+    "info": {
+      "mount": [
+        {
+          "actualTime": 2.8250000905245543,
+          "baseTime": 0.9700007503852248,
+          "startTime": 393.294999958016,
+          "commitTime": 398.70000001974404,
+          "interactions": {},
+          "difference": 5.40500006172806
+        }
+      ],
+      "update": [
+        {
+          "actualTime": 13.43000028282404,
+          "baseTime": 4.795000189915299,
+          "startTime": 1411.8650000309572,
+          "commitTime": 1428.2850000308827,
+          "interactions": {},
+          "difference": 16.419999999925494
+        },
+        {
+          "actualTime": 14.249999076128006,
+          "baseTime": 4.965000320225954,
+          "startTime": 2458.534999983385,
+          "commitTime": 2476.5650000190362,
+          "interactions": {},
+          "difference": 18.030000035651028
+        },
+        {
+          "actualTime": 13.985000201500952,
+          "baseTime": 5.000001052394509,
+          "startTime": 3508.299999986775,
+          "commitTime": 3525.8349999785423,
+          "interactions": {},
+          "difference": 17.53499999176711
+        },
+        {
+          "actualTime": 15.140000963583589,
+          "baseTime": 5.180000327527523,
+          "startTime": 4548.130000010133,
+          "commitTime": 4567.009999998845,
+          "interactions": {},
+          "difference": 18.87999998871237
+        },
+        {
+          "actualTime": 3.0899994308128953,
+          "baseTime": 1.07999995816499,
+          "startTime": 5587.15499995742,
+          "commitTime": 5591.005000052974,
+          "interactions": {},
+          "difference": 3.850000095553696
+        },
+        {
+          "actualTime": 17.570000723935664,
+          "baseTime": 4.885000409558415,
+          "startTime": 6601.550000021234,
+          "commitTime": 6627.450000029057,
+          "interactions": {},
+          "difference": 25.90000000782311
+        },
+        {
+          "actualTime": 2.474999986588955,
+          "baseTime": 0.8349999552592635,
+          "startTime": 7635.690000024624,
+          "commitTime": 7639.130000025034,
+          "interactions": {},
+          "difference": 3.440000000409782
+        },
+        {
+          "actualTime": 6.2399995513260365,
+          "baseTime": 1.769999391399324,
+          "startTime": 8649.84500000719,
+          "commitTime": 8656.824999954551,
+          "interactions": {},
+          "difference": 6.979999947361648
+        },
+        {
+          "actualTime": 2.935000229626894,
+          "baseTime": 1.165000256150961,
+          "startTime": 9669.585000025108,
+          "commitTime": 9673.130000010133,
+          "interactions": {},
+          "difference": 3.544999985024333
+        },
+        {
+          "actualTime": 7.210000418126583,
+          "baseTime": 2.665000385604799,
+          "startTime": 10685.015000053681,
+          "commitTime": 10692.709999973886,
+          "interactions": {},
+          "difference": 7.694999920204282
+        }
+      ]
+    }
+  }
+]

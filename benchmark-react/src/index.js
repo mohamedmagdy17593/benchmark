@@ -31,6 +31,7 @@ Benchmark.defaultProps = {
   componentsCount: 100,
   reRendersCount: 10,
   reRenderInterval: 1000,
+  testCaseName: 'untitled test case name',
 }
 Benchmark.prototype = {
   componentsCount: PropType.number,
