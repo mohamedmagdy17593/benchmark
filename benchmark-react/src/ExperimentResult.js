@@ -158,47 +158,56 @@ function Result({results}) {
 }
 
 class ExperimentResult extends Component {
-  state = {results: {}, path: localStorage.getItem('benchmarkPath') || ''}
+  state = {
+    results: {},
+    fileName: localStorage.getItem('benchmarkFileName') || '',
+    testCaseName: this.props.testCaseName || '',
+  }
   componentDidMount() {
     if (f) {
-      throw new Error('Benchmark defined on a page only one time')
+      console.error('Benchmark defined on a page only one time')
+      alert('Benchmark defined on a page only one time')
+      return
     }
     f = newResult =>
       this.setState(({results}) => ({
         results: arrMergeDeep(results, newResult),
       }))
   }
-  handleChange = e => this.setState({path: e.target.value})
+  handleFileNameChange = e => this.setState({fileName: e.target.value})
+  handleTestCaseNameChange = e => this.setState({testCaseName: e.target.value})
   save = async () => {
-    const [path, data] = this.getDataToSend()
-    localStorage.setItem('benchmarkPath', path)
-    await sendResults(path, data)
+    const [fileName, data] = this.getDataToSend()
+    if (!fileName || !data.testCaseName) {
+      return alert('please provide results fileName and test case name')
+    }
+    localStorage.setItem('benchmarkFileName', fileName)
+    await sendResults(fileName, data)
     alert('saved!!')
   }
   getDataToSend() {
-    const {path, results} = this.state
+    const {fileName, testCaseName, results} = this.state
     const resultsInfo = R.pickAll(
-      [
-        'componentsCount',
-        'reRendersCount',
-        'reRenderInterval',
-        'testCaseName',
-      ],
+      ['componentsCount', 'reRendersCount', 'reRenderInterval'],
       this.props,
     )
-    return [path, {...resultsInfo, ...results}]
+    return [fileName, {...resultsInfo, testCaseName, ...results}]
   }
   render() {
-    const {path, results} = this.state
-    const {testCaseName} = this.props
+    const {fileName, testCaseName, results} = this.state
     return (
       <div style={{padding: 12}}>
         <p>
           <strong>save to:</strong>{' '}
           <input
-            value={path}
-            onChange={this.handleChange}
-            placeholder="results path"
+            value={fileName}
+            onChange={this.handleFileNameChange}
+            placeholder="file name"
+          />
+          <input
+            value={testCaseName}
+            onChange={this.handleTestCaseNameChange}
+            placeholder="test case name"
           />
           <button onClick={this.save}>save results</button> see all{' '}
           <a href={url} target="blank">

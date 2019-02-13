@@ -17485,12 +17485,19 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       results: {},
-      path: localStorage.getItem('benchmarkPath') || ''
+      fileName: localStorage.getItem('benchmarkFileName') || '',
+      testCaseName: _this.props.testCaseName || ''
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleFileNameChange", function (e) {
       return _this.setState({
-        path: e.target.value
+        fileName: e.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleTestCaseNameChange", function (e) {
+      return _this.setState({
+        testCaseName: e.target.value
       });
     });
 
@@ -17499,21 +17506,30 @@ function (_Component) {
     _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
-      var _this$getDataToSend, _this$getDataToSend2, path, data;
+      var _this$getDataToSend, _this$getDataToSend2, fileName, data;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this$getDataToSend = _this.getDataToSend(), _this$getDataToSend2 = _slicedToArray(_this$getDataToSend, 2), path = _this$getDataToSend2[0], data = _this$getDataToSend2[1];
-              localStorage.setItem('benchmarkPath', path);
-              _context.next = 4;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_2__["sendResults"])(path, data);
+              _this$getDataToSend = _this.getDataToSend(), _this$getDataToSend2 = _slicedToArray(_this$getDataToSend, 2), fileName = _this$getDataToSend2[0], data = _this$getDataToSend2[1];
 
-            case 4:
+              if (!(!fileName || !data.testCaseName)) {
+                _context.next = 3;
+                break;
+              }
+
+              return _context.abrupt("return", alert('please provide results fileName and test case name'));
+
+            case 3:
+              localStorage.setItem('benchmarkFileName', fileName);
+              _context.next = 6;
+              return Object(_api__WEBPACK_IMPORTED_MODULE_2__["sendResults"])(fileName, data);
+
+            case 6:
               alert('saved!!');
 
-            case 5:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -17530,7 +17546,9 @@ function (_Component) {
       var _this2 = this;
 
       if (f) {
-        throw new Error('Benchmark defined on a page only one time');
+        console.error('Benchmark defined on a page only one time');
+        alert('Benchmark defined on a page only one time');
+        return;
       }
 
       f = function f(newResult) {
@@ -17546,26 +17564,33 @@ function (_Component) {
     key: "getDataToSend",
     value: function getDataToSend() {
       var _this$state = this.state,
-          path = _this$state.path,
+          fileName = _this$state.fileName,
+          testCaseName = _this$state.testCaseName,
           results = _this$state.results;
-      var resultsInfo = ramda__WEBPACK_IMPORTED_MODULE_1__["pickAll"](['componentsCount', 'reRendersCount', 'reRenderInterval', 'testCaseName'], this.props);
-      return [path, _objectSpread({}, resultsInfo, results)];
+      var resultsInfo = ramda__WEBPACK_IMPORTED_MODULE_1__["pickAll"](['componentsCount', 'reRendersCount', 'reRenderInterval'], this.props);
+      return [fileName, _objectSpread({}, resultsInfo, {
+        testCaseName: testCaseName
+      }, results)];
     }
   }, {
     key: "render",
     value: function render() {
       var _this$state2 = this.state,
-          path = _this$state2.path,
+          fileName = _this$state2.fileName,
+          testCaseName = _this$state2.testCaseName,
           results = _this$state2.results;
-      var testCaseName = this.props.testCaseName;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           padding: 12
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "save to:"), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        value: path,
-        onChange: this.handleChange,
-        placeholder: "results path"
+        value: fileName,
+        onChange: this.handleFileNameChange,
+        placeholder: "file name"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: testCaseName,
+        onChange: this.handleTestCaseNameChange,
+        placeholder: "test case name"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.save
       }, "save results"), " see all", ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -17596,10 +17621,10 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sendResults", function() { return sendResults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "url", function() { return url; });
-var url = 'http://localhost:8080/files';
+var url = 'http://localhost:8080';
 
 function sendResults(path, data) {
-  return fetch("".concat(url, "/").concat(path), {
+  return fetch("".concat(url, "/files/").concat(path), {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -17608,6 +17633,9 @@ function sendResults(path, data) {
     body: JSON.stringify(data)
   }).then(function (res) {
     return res.json();
+  }).catch(function (e) {
+    alert('please open benchmark server');
+    throw e;
   });
 }
 
