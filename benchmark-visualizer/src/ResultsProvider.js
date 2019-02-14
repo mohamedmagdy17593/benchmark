@@ -1,38 +1,33 @@
-import React from 'react'
-import {getResults, getFileNames, deleteExperment} from './api'
+import React from "react";
+import { getResults, getFileNames, deleteExperment } from "./api";
 
-const resultsContext = React.createContext()
+const resultsContext = React.createContext();
 
-function ResultsProvider({children}) {
-  const [results, setResults] = React.useState([])
-  const [fileNames, setFileNames] = React.useState([])
-  const [fileName, _setFileName] = React.useState()
-
+function ResultsProvider({ children }) {
+  const [results, setResults] = React.useState([]);
+  const [fileNames, setFileNames] = React.useState([]);
+  const [fileName, _setFileName] = React.useState();
   React.useEffect(() => {
     getFileNames().then(fileNames => {
-      setFileNames(fileNames)
-      setFileName(fileNames[0])
-    })
-  }, [])
-
+      setFileNames(fileNames);
+      setFileName(fileNames[0]);
+    });
+  }, []);
   function setResultByIndex(resultIndex, data) {
     setResults(results =>
-      results.map((r, i) => (i === resultIndex ? {...r, ...data} : r)),
-    )
+      results.map((r, i) => (i === resultIndex ? { ...r, ...data } : r))
+    );
   }
-
   function setFileName(fileName) {
-    _setFileName(fileName)
+    _setFileName(fileName);
     if (fileName) {
-      getResults(fileName).then(setResults)
+      getResults(fileName).then(setResults);
     }
   }
-
   function deleteExpermentByIndex(index) {
-    deleteExperment(fileName, index)
-    setResults(results.filter((_, i) => i !== +index))
+    deleteExperment(fileName, index);
+    setResults(results.filter((_, i) => i !== +index));
   }
-
   return (
     <resultsContext.Provider
       value={React.useMemo(
@@ -44,19 +39,19 @@ function ResultsProvider({children}) {
           setFileNames,
           fileName,
           setFileName,
-          deleteExpermentByIndex,
+          deleteExpermentByIndex
         }),
-        [results, fileNames, fileName],
+        [results, fileNames, fileName]
       )}
     >
       {children}
     </resultsContext.Provider>
-  )
+  );
 }
 
 function useResults() {
-  return React.useContext(resultsContext)
+  return React.useContext(resultsContext);
 }
 
-export {useResults}
-export default ResultsProvider
+export { useResults };
+export default ResultsProvider;

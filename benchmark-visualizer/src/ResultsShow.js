@@ -43,22 +43,25 @@ function getAvgFor(results, key) {
 function ResultsShow() {
   const { results } = useResults();
   const [filterKey, setFilterKey] = React.useState("actualTime");
-
-  const checkedResults = results.filter(r => r.checked);
+  const checkedResults = results
+    .filter(r => r.checked)
+    // to arrange object keys 😃
+    .map(({ testCaseName, ...rest }) => ({ testCaseName, ...rest }));
   const avgCheckedResults = getAvgFor(checkedResults, filterKey);
-
   return (
     <div>
       <ResultsDropdownFilter onChange={setFilterKey} value={filterKey} />
       <hr />
-      <BarChart width={700} height={300} data={avgCheckedResults}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="avg" fill="#007bff" />
-      </BarChart>
+      <section>
+        <BarChart width={700} height={300} data={avgCheckedResults}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="avg" fill="#007bff" />
+        </BarChart>
+      </section>
       <br />
       <section className="py-3">
         <ReactJson collapsed src={avgCheckedResults} />
