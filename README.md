@@ -67,9 +67,9 @@ import Benchmark from 'benchmark-react';
 export default function App () {
   return (
     <Benchmark
-      componentsCount={100}, // default
-      reRendersCount={10}, // default
-      reRenderInterval={1000}, // default
+      componentsCount={100} // default
+      reRendersCount={10} // default
+      reRenderInterval={1000} // default
       testCaseName="some name"
     >
       <CustomComponent />
